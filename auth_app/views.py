@@ -49,6 +49,9 @@ class AuthViewSet(viewsets.ViewSet):
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'username': user.username,
+                'name_complete': user.get_full_name(),
+                'email': user.email
             })
         else:
             return Response({'error': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
